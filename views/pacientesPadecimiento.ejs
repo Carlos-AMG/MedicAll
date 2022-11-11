@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes Padecimiento</title>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
+    <!-- Fonts awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap files -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <!-- Our stylesheet -->
+    <link rel="stylesheet" href="css/padecimientosStyles.css" type="text/css">
+</head>
+<body>
+
+    <section id="title">
+        <div class="container-fluid">
+            <!-- Nav Bar -->
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">MedicAll</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="" style="color:white;">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="" style="color:white;">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="" style="color:white;">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <h1>Buscar pacientes por padecimiento</h1>
+            <!-- <label for="padecimientos"> Ingrese el padecimiento: </label> -->
+            <form method="post" action="/prueba">
+                <label for="padecimientos">Ingrese el padecimiento: </label>
+                <input type="text" id="padecimientos" name="padecimientos" placeholder="Padecimientos">
+                <input type="submit" value="Enviar" class="btn btn-primary">
+            </form>
+        </section>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Nss</th>
+                <th>Edad</th>
+                <th>Enfermedad</th>
+                <th>Tipo de Enfermedad</th>
+                <th>Fecha padecimiento</th>
+            </tr>
+            <% if (data?.length > 0){
+                data.forEach(data => {
+            %>
+            <tr>
+                <td><%= data.nombre %></td>
+                <td><%= data.apellido %></td>
+                <td><%= data.nss %></td>
+                <td><%= data.edad %></td>
+                <td><%= data.enfermedad %></td>
+                <td><%= data.tipoEnfermedad %></td>
+                <td><%= data.fechaPadecimiento %></td>
+            </tr>    
+            <%   
+                });
+            }
+            else {
+            %>
+            <tr>
+                <td colspan="5">No Data Found</td>
+            </tr>
+            <%
+            }
+            %>
+        </table>
+    </div>
+
+    <!-- bootstrap js files -->
+    <script src="bootstrap/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
